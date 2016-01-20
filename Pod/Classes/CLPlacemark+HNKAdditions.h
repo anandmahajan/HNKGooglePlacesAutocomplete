@@ -69,5 +69,10 @@ extern NSString *HNKCLPlacemarkDescriptionForErrorCode(HNKCLPlacemarkErrorCode e
                               apiKey:(NSString *)apiKey
                           completion:
                               (void (^)(CLPlacemark *placemark, NSString *addressString, NSError *error))completion;
+                              
+                        
++ (void)googleAddressDictForPlace:(HNKGooglePlacesAutocompletePlace *)place
+                           apiKey:(NSString *)apiKey
+                       completion:(void (^)(NSDictionary  *dictAddress, NSError *error))completion;
 
 @end
