@@ -195,5 +195,25 @@ NSString *HNKCLPlacemarkDescriptionForErrorCode(HNKCLPlacemarkErrorCode errorCod
     }
     }
 }
++ (void)googleAddressDictForPlace:(HNKGooglePlacesAutocompletePlace *)place
+                 apiKey:(NSString *)apiKey
+             completion:(void (^)(NSDictionary  *dictAddress, NSError *error))completion
+{
+    
+   [HNKGooglePlacesServer GET:kHNKGooglePlacesServerRequestPathDetails
+                    parameters:@{
+                                 @"placeid" : place.placeId,
+                                 @"key" : apiKey
+                                 }
+                    completion:^(NSDictionary *JSON, NSError *error) {
+                        
+                        if (error) {
+                            completion(nil, error);
+                        } else {
+                            
+                            completion(JSON,error);
+                        }
+                    }];
 
+}
 @end
